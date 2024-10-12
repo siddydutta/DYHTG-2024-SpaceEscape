@@ -3,7 +3,7 @@ signal hit  # For when the player collides with a mob
 signal power_up_collected  # For when the player collects a power-up
 
 @export var speed = 400 # How fast the player will move (pixels/sec).
-@export var gesture_flag = false
+@export var gesture_flag = true
 var screen_size # Size of the game window.
 var server: UDPServer
 
