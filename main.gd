@@ -4,8 +4,8 @@ extends Node
 var score
 
 func _ready():
-	new_game()
-
+	#$HUD.connect("start_game", self, "new_game")
+	$HUD.start_game.connect(self.new_game)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -14,11 +14,13 @@ func _process(delta: float) -> void:
 func game_over():
 	$ElevationTimer.stop()
 	$MobTimer.stop()
+	$HUD.show_game_over()
 
 func new_game():
 	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
+	$HUD.update_score(score)
 	
 #func _on_score_timer_timeout():
 	#score += 1
@@ -57,3 +59,4 @@ func _on_mob_timer_timeout():
 
 func _on_elevation_timer_timeout() -> void:
 	score += 1
+	$HUD.update_score(score)

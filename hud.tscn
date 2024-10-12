@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://degj6m0gu6v8h"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_3qoct"]
+[ext_resource type="FontFile" uid="uid://k8d0jlop2ihp" path="res://fonts/Xolonium-Regular.ttf" id="1_58que"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_3qoct")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 64.0
+offset_right = 109.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("1_58que")
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="Message" type="Label" parent="."]
+offset_left = 114.0
+offset_top = 183.0
+offset_right = 360.0
+offset_bottom = 423.0
+theme_override_fonts/font = ExtResource("1_58que")
+theme_override_font_sizes/font_size = 64
+text = "Escape
+PLanet
+Earth"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -86.0
+offset_right = 240.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_58que")
+theme_override_font_sizes/font_size = 56
+toggle_mode = true
+text = "Launch Rocket"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
