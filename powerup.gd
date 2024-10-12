@@ -1,17 +1,12 @@
-extends RigidBody2D
+extends Node2D
 
-var screen_size # Size of the game window.
-
-var sprite = $AnimatedSprite2D
-
+@onready var sprite = $AnimatedSprite2D
 
 func _ready():
-	sprite.play("powerup")
+	sprite.play("power_up")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$AnimatedSprite2D.animation = "powerup"
-	$AnimatedSprite2D.play()
+	pass
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
