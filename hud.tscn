@@ -22,7 +22,7 @@ offset_bottom = 423.0
 theme_override_fonts/font = ExtResource("1_58que")
 theme_override_font_sizes/font_size = 64
 text = "Escape
-PLanet
+Planet
 Earth"
 horizontal_alignment = 1
 autowrap_mode = 2

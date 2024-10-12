@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://b24eit6703syq"]
+[gd_scene load_steps=9 format=3 uid="uid://b24eit6703syq"]
 
 [ext_resource type="PackedScene" uid="uid://bqds5kpqglm8d" path="res://Player.tscn" id="1_iwmrs"]
 [ext_resource type="Script" path="res://main.gd" id="1_t4vn5"]
-[ext_resource type="PackedScene" uid="uid://bwyetln3p16c4" path="res://Background/BackGround.tscn" id="2_t3buh"]
+[ext_resource type="Shader" path="res://scroll.gdshader" id="2_htj57"]
+[ext_resource type="Texture2D" uid="uid://pl11u3ua1kpo" path="res://Background/space background.png" id="3_ety76"]
 [ext_resource type="PackedScene" uid="uid://degj6m0gu6v8h" path="res://hud.tscn" id="4_6nxef"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_byheq"]
+shader = ExtResource("2_htj57")
 
 [sub_resource type="Curve2D" id="Curve2D_euxua"]
 _data = {
@@ -20,7 +24,12 @@ point_count = 5
 [node name="Main" type="Node"]
 script = ExtResource("1_t4vn5")
 
-[node name="BackGround" parent="." instance=ExtResource("2_t3buh")]
+[node name="Pattern" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_byheq")
+offset_right = 2048.0
+offset_bottom = 1536.0
+texture = ExtResource("3_ety76")
 
 [node name="Player" parent="." instance=ExtResource("1_iwmrs")]
 
