@@ -13,9 +13,9 @@ point_count = 6
 
 [sub_resource type="Curve2D" id="Curve2D_fyrt5"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 8, 8, 0, 0, 0, 0, 472, 16, 0, 0, 0, 0, 472, 352, 0, 0, 0, 0, 8, 352, 0, 0, 0, 0, 8, 8)
+"points": PackedVector2Array(0, 0, 0, 0, 8, 8, 0, 0, 0, 0, 472, 16, 0, 0, 0, 0, 472, 352, 0, 0, 0, 0, 240, 354, 0, 0, 0, 0, 8, 352, 0, 0, 0, 0, 8, 8)
 }
-point_count = 5
+point_count = 6
 
 [node name="Main" type="Node"]
 script = ExtResource("1_t4vn5")
@@ -23,6 +23,7 @@ script = ExtResource("1_t4vn5")
 [node name="BackGround" parent="." instance=ExtResource("2_t3buh")]
 
 [node name="Player" parent="." instance=ExtResource("1_iwmrs")]
+speed = 300
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -49,6 +50,8 @@ rotation = -1.5708
 [node name="HUD" parent="." instance=ExtResource("4_6nxef")]
 
 [node name="PowerUpPath" type="Path2D" parent="."]
+position = Vector2(0, 4.73988)
+scale = Vector2(1, 0.407514)
 curve = SubResource("Curve2D_fyrt5")
 
 [node name="PowerUpSpawnLocation" type="PathFollow2D" parent="PowerUpPath"]

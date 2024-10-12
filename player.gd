@@ -18,6 +18,7 @@ func _ready() -> void:
 	server = UDPServer.new()
 	server.listen(4242)
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if gesture_flag:
@@ -96,7 +97,7 @@ func _on_power_up_collision(power_up: Node2D) -> void:
 
 	# You might want to hide or remove the power-up from the scene
 	power_up.queue_free()
-
+	
 # Function to reset the player and start at a specific position
 func start(pos):
 	position = pos
