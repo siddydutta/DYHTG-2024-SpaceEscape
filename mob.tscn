@@ -1,39 +1,45 @@
 [gd_scene load_steps=6 format=3 uid="uid://bsd05luwllfjk"]
 
-[ext_resource type="Texture2D" uid="uid://datkjweq1auv2" path="res://art/bird-1.png" id="1_bjq7h"]
 [ext_resource type="Script" path="res://mob.gd" id="1_vwjby"]
-[ext_resource type="Texture2D" uid="uid://bgxj24pc60dpo" path="res://art/bird-2.png" id="2_bl85m"]
+[ext_resource type="Texture2D" uid="uid://cxgfqppbj3rjt" path="res://Sprites 2/Station/spaceStation_024.png" id="2_vm4hf"]
+[ext_resource type="Texture2D" uid="uid://dkj6nltdrogxe" path="res://Sprites 2/Station/spaceStation_025.png" id="3_c2rjm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_moe2g"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_bjq7h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_bl85m")
+"texture": ExtResource("2_vm4hf")
 }],
 "loop": true,
-"name": &"Falling",
+"name": &"Space_Station_Blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_c2rjm")
+}],
+"loop": true,
+"name": &"Space_Station_White",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbppe"]
-radius = 21.0
-height = 42.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_otvtr"]
+radius = 8.99996
+height = 88.0
 
 [node name="Mob" type="RigidBody2D" groups=["mobs"]]
 collision_mask = 0
 script = ExtResource("1_vwjby")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_moe2g")
-animation = &"Falling"
+animation = &"Space_Station_Blue"
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_vbppe")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_otvtr")
 metadata/_edit_group_ = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
