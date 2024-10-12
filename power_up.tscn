@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://boy57fuyyhwu3"]
+[gd_scene load_steps=10 format=3 uid="uid://drt2oi3pgplw1"]
 
+[ext_resource type="Script" path="res://powerup.gd" id="1_fmasb"]
 [ext_resource type="Texture2D" uid="uid://2pdc4e5ty8tu" path="res://art/PowerUps/frame 1.png" id="1_q2l1w"]
 [ext_resource type="Texture2D" uid="uid://b6gmkgk6siyvn" path="res://art/PowerUps/frame 2.png" id="2_wkwpm"]
 [ext_resource type="Texture2D" uid="uid://c8xka1lv2qtek" path="res://art/PowerUps/frame 3.png" id="3_dmtg3"]
@@ -38,6 +39,7 @@ radius = 64.0
 
 [node name="PowerUP" type="RigidBody2D" groups=["powerups"]]
 collision_mask = 0
+script = ExtResource("1_fmasb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
