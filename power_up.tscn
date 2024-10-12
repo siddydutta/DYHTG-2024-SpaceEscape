@@ -35,14 +35,15 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mel2t"]
-radius = 64.0
+radius = 37.3571
 
 [node name="PowerUP" type="RigidBody2D" groups=["powerups"]]
 collision_mask = 0
+gravity_scale = 0.0
 script = ExtResource("1_fmasb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_3f6y5")
 animation = &"power_up"
 frame = 5
