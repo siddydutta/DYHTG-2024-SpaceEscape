@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b24eit6703syq"]
+
+[ext_resource type="PackedScene" uid="uid://bqds5kpqglm8d" path="res://Player.tscn" id="1_iwmrs"]
+[ext_resource type="Script" path="res://main.gd" id="1_t4vn5"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_t4vn5")
+
+[node name="Player" parent="." instance=ExtResource("1_iwmrs")]
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="ElevationTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(240, 640)
