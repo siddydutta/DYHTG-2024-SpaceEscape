@@ -1,32 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://boy57fuyyhwu3"]
+[gd_scene load_steps=9 format=3 uid="uid://boy57fuyyhwu3"]
 
-[ext_resource type="Texture2D" uid="uid://cgkx7grl4oyos" path="res://art/player-right.png" id="1_p4anm"]
+[ext_resource type="Texture2D" uid="uid://2pdc4e5ty8tu" path="res://art/PowerUps/frame 1.png" id="1_q2l1w"]
+[ext_resource type="Texture2D" uid="uid://b6gmkgk6siyvn" path="res://art/PowerUps/frame 2.png" id="2_wkwpm"]
+[ext_resource type="Texture2D" uid="uid://c8xka1lv2qtek" path="res://art/PowerUps/frame 3.png" id="3_dmtg3"]
+[ext_resource type="Texture2D" uid="uid://ceuq4o6xrbh8y" path="res://art/PowerUps/frame 4.png" id="4_0qf5s"]
+[ext_resource type="Texture2D" uid="uid://du7lxiqeaeser" path="res://art/PowerUps/frame 5.png" id="5_tk75t"]
+[ext_resource type="Texture2D" uid="uid://bdwjwqqac07qr" path="res://art/PowerUps/frame 6.png" id="6_v1qjc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3f6y5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_p4anm")
+"texture": ExtResource("1_q2l1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wkwpm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dmtg3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0qf5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tk75t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_v1qjc")
 }],
-"loop": true,
+"loop": false,
 "name": &"powerup",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vhn0l"]
-radius = 48.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_mel2t"]
+radius = 64.0
 
 [node name="PowerUP" type="RigidBody2D" groups=["powerups"]]
 collision_mask = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_3f6y5")
 animation = &"powerup"
+frame = 5
+frame_progress = 1.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.75, 0.75)
-shape = SubResource("CircleShape2D_vhn0l")
+shape = SubResource("CircleShape2D_mel2t")
 one_way_collision = true
 metadata/_edit_group_ = true
 
