@@ -21,6 +21,11 @@ window/size/viewport_width=480
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+mobs="Objects that will hit the player and end the game"
+powerups="PowerUps that will make the player go faster"
+
 [input]
 
 move_right={
