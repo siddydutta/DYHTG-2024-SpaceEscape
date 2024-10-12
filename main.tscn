@@ -11,9 +11,14 @@ _data = {
 }
 point_count = 6
 
+[sub_resource type="Curve2D" id="Curve2D_fyrt5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 8, 8, 0, 0, 0, 0, 472, 16, 0, 0, 0, 0, 472, 352, 0, 0, 0, 0, 8, 352, 0, 0, 0, 0, 8, 8)
+}
+point_count = 5
+
 [node name="Main" type="Node"]
 script = ExtResource("1_t4vn5")
-mob_scene = ExtResource("2_quhpm")
 
 [node name="Player" parent="." instance=ExtResource("1_iwmrs")]
 
@@ -25,10 +30,14 @@ wait_time = 0.5
 [node name="StartTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="PowerUpTimer" type="Timer" parent="."]
+wait_time = 2.0
+
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(240, 640)
 
 [node name="MobPath" type="Path2D" parent="."]
+scale = Vector2(1, 0.01)
 curve = SubResource("Curve2D_euxua")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
@@ -36,8 +45,15 @@ position = Vector2(0, 4)
 rotation = -1.5708
 
 [node name="HUD" parent="." instance=ExtResource("4_6nxef")]
+[node name="PowerUpPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_fyrt5")
+
+[node name="PowerUpSpawnLocation" type="PathFollow2D" parent="PowerUpPath"]
+position = Vector2(8, 8)
+rotation = 0.0172397
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ElevationTimer" to="." method="_on_elevation_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="PowerUpTimer" to="." method="_on_power_up_timer_timeout"]

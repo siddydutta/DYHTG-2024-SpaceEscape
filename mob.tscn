@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://tdfic8a1err8"]
+[gd_scene load_steps=6 format=3 uid="uid://bsd05luwllfjk"]
 
 [ext_resource type="Texture2D" uid="uid://datkjweq1auv2" path="res://art/bird-1.png" id="1_bjq7h"]
+[ext_resource type="Script" path="res://mob.gd" id="1_vwjby"]
 [ext_resource type="Texture2D" uid="uid://bgxj24pc60dpo" path="res://art/bird-2.png" id="2_bl85m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_moe2g"]
@@ -21,11 +22,12 @@ animations = [{
 radius = 21.0
 height = 42.0
 
-[node name="Mob" type="RigidBody2D"]
+[node name="Mob" type="RigidBody2D" groups=["mobs"]]
 collision_mask = 0
+script = ExtResource("1_vwjby")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_moe2g")
 animation = &"Falling"
 metadata/_edit_group_ = true
