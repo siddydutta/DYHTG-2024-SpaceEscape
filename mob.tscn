@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsd05luwllfjk"]
+
+[ext_resource type="Texture2D" uid="uid://datkjweq1auv2" path="res://art/bird-1.png" id="1_bjq7h"]
+[ext_resource type="Texture2D" uid="uid://bgxj24pc60dpo" path="res://art/bird-2.png" id="2_bl85m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_moe2g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bjq7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bl85m")
+}],
+"loop": true,
+"name": &"Falling",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbppe"]
+radius = 21.0
+height = 42.0
+
+[node name="Mob" type="RigidBody2D"]
+collision_mask = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_moe2g")
+animation = &"Falling"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_vbppe")
+metadata/_edit_group_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+metadata/_edit_group_ = true
