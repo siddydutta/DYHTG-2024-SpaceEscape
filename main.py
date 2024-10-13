@@ -1,13 +1,11 @@
 import socket
 import cv2 
 import mediapipe as mp 
-from google.protobuf.json_format import MessageToDict 
 
 server_ip = '127.0.0.1'
 server_port = 4242
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-# from: https://www.geeksforgeeks.org/right-and-left-hand-detection-using-python/
 mp_hands = mp.solutions.hands 
 hands = mp_hands.Hands( 
     static_image_mode=False, 
@@ -50,5 +48,6 @@ while True:
     # cv2.imshow('Image', img) 
     if cv2.waitKey(1) & 0xff == ord('q'): 
         break
+
 cap.release()
 cv2.destroyAllWindows()
