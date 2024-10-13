@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b24eit6703syq"]
+[gd_scene load_steps=10 format=3 uid="uid://b24eit6703syq"]
 
 [ext_resource type="PackedScene" uid="uid://bqds5kpqglm8d" path="res://Player.tscn" id="1_iwmrs"]
 [ext_resource type="Script" path="res://main.gd" id="1_t4vn5"]
 [ext_resource type="Shader" path="res://scroll.gdshader" id="2_htj57"]
 [ext_resource type="Texture2D" uid="uid://b0vjre1rgw1u8" path="res://Background/space background.png" id="3_ety76"]
 [ext_resource type="PackedScene" uid="uid://degj6m0gu6v8h" path="res://hud.tscn" id="4_6nxef"]
+[ext_resource type="AudioStream" uid="uid://th4xqvcvvvpl" path="res://Music/Space Music.mp3" id="6_y8fp7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1cdhd"]
 shader = ExtResource("2_htj57")
@@ -89,6 +90,11 @@ curve = SubResource("Curve2D_fyrt5")
 [node name="SpeedDownBuffSpawnLocation" type="PathFollow2D" parent="SpeedDownBuffPath"]
 position = Vector2(8, 8)
 rotation = 0.0172397
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_y8fp7")
+autoplay = true
+parameters/looping = false
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
