@@ -73,17 +73,27 @@ func _update_movement_and_animation(velocity: Vector2, delta: float):
 
 	last_velocity = velocity
 
-
-
 func _on_body_entered(body: Node2D) -> void:
+	
+	var audio_player = AudioStreamPlayer.new()
+	add_child(audio_player)
+	
 	# Check if the collided body is a mob
 	if body.is_in_group("mobs"):
+		audio_player.stream = load("res://Music/SpaceSFX/explosion4.ogg") # Add player for sound effect
+		audio_player.play() # Play audio
 		_on_mob_collision(body)
 	elif body.is_in_group("speedUp"):
+		audio_player.stream = load("res://Music/SpaceSFX/laser1.ogg") # Add player for sound effect
+		audio_player.play() # Play audio
 		_on_speedUpBuff_collision(body)
 	elif body.is_in_group("speedDown"):
+		audio_player.stream = load("res://Music/SpaceSFX/laser3.ogg") # Add player for sound effect
+		audio_player.play() # Play audio
 		_on_speedDownBuff_collision(body)
 	else:
+		audio_player.stream = load("res://Music/SpaceSFX/explosion6.ogg") # Add player for sound effect
+		audio_player.play() # Play audio
 		_on_asteroid_collision(body)
 
 # Handle mob collision (player hit by a mob)
