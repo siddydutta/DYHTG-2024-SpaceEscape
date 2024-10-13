@@ -80,9 +80,19 @@ func _on_body_entered(body: Node2D) -> void:
 		_on_mob_collision(body)
 	elif body.is_in_group("powerups"):
 		_on_power_up_collision(body)
+	else:
+		_on_asteroid_collision(body)
 
 # Handle mob collision (player hit by a mob)
 func _on_mob_collision(mob: Node2D) -> void:
+	hide()
+	hit.emit()
+
+	# Must be deferred as we can't change physics properties on a physics callback.
+	$CollisionShape2D.set_deferred("disabled", true)
+
+# Handle asteroid collision (player hit by an asteroid)
+func _on_asteroid_collision(asteroid: Node2D) -> void:
 	hide()
 	hit.emit()
 

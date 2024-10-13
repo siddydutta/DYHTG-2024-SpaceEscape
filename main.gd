@@ -1,11 +1,15 @@
 extends Node
 
 @export var mob_scene: PackedScene = preload("res://mob.tscn")
+@export var asteroid_scene: PackedScene = preload("res://asteroid.tscn")
 @export var power_up_scene: PackedScene = preload("res://power_up.tscn")
 
 var score
 var mob_initial_velocity = 200
 var mob_final_velocity = 250
+var asteroid_initial_velocity = 100
+var asteroid_final_velocity = 200
+
 var powerup_initial_velocity = 200
 var powerup_final_velocity = 250
 var speedDifficulty = 0
@@ -24,6 +28,7 @@ func game_over():
 	$ElevationTimer.stop()
 	$MobTimer.stop()
 	$PowerUpTimer.stop()
+	$AsteroidTimer.stop()
 	$HUD.show_game_over()
 
 func new_game():
@@ -36,6 +41,7 @@ func _on_start_timer_timeout():
 	$MobTimer.start()
 	$ElevationTimer.start()
 	$PowerUpTimer.start()
+	$AsteroidTimer.start()
 
 func _on_mob_timer_timeout():
 	# Create a new instance of the Mob scene.
@@ -64,7 +70,20 @@ func _on_mob_timer_timeout():
 func _on_elevation_timer_timeout() -> void:
 	score += 1
 	$HUD.update_score(score)
-	
+
+
+func _on_asteroid_timer_timeout() -> void:
+	var asteroid = asteroid_scene.instantiate()
+
+	var asteroid_spawn_location = $AsteroidPath/AsteroidSpawnLocation
+	asteroid_spawn_location.progress_ratio = randf()
+
+	asteroid.position = asteroid_spawn_location.position
+
+	var velocity = Vector2(randf_range(asteroid_initial_velocity, asteroid_final_velocity), 0.0)
+	asteroid.linear_velocity = velocity
+
+	add_child(asteroid)
 	
 
 func _on_power_up_collected():

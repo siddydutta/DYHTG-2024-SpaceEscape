@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://th4xqvcvvvpl"
+path="res://.godot/imported/Space Music.mp3-81f29fcd4eb5b1d9d74cf89537dde69c.mp3str"
+
+[deps]
+
+source_file="res://Music/Space Music.mp3"
+dest_files=["res://.godot/imported/Space Music.mp3-81f29fcd4eb5b1d9d74cf89537dde69c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

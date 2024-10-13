@@ -25,6 +25,7 @@ window/stretch/mode="canvas_items"
 
 mobs="Objects that will hit the player and end the game"
 powerups="PowerUps that will make the player go faster"
+asteroids=""
 
 [input]
 
