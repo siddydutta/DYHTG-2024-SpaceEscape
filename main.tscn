@@ -86,5 +86,4 @@ rotation = 0.0172397
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="SpeedUpBuffTimer" to="." method="_on_speedUpBuff_timer_timeout"]
 [connection signal="timeout" from="SpeedDownBuffTimer" to="." method="_on_speed_down_buff_timer_timeout"]
-[connection signal="timeout" from="PowerUpTimer" to="." method="_on_power_up_timer_timeout"]
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]

@@ -34,7 +34,6 @@ func game_over():
 	$MobTimer.stop()
 	$SpeedUpBuffTimer.stop()
 	$SpeedDownBuffTimer.stop()
-	$PowerUpTimer.stop()
 	$AsteroidTimer.stop()
 	$HUD.show_game_over()
 
@@ -49,7 +48,6 @@ func _on_start_timer_timeout():
 	$ElevationTimer.start()
 	$SpeedUpBuffTimer.start()
 	$SpeedDownBuffTimer.start()
-	$PowerUpTimer.start()
 	$AsteroidTimer.start()
 
 func _on_mob_timer_timeout():

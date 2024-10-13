@@ -17,6 +17,7 @@ func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	server = UDPServer.new()
 	server.listen(4242)
+	hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -82,8 +83,6 @@ func _on_body_entered(body: Node2D) -> void:
 		_on_speedUpBuff_collision(body)
 	elif body.is_in_group("speedDown"):
 		_on_speedDownBuff_collision(body)
-	elif body.is_in_group("powerups"):
-		_on_power_up_collision(body)
 	else:
 		_on_asteroid_collision(body)
 
