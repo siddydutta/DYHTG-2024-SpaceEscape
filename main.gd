@@ -11,7 +11,7 @@ var mob_initial_velocity = 200
 var mob_final_velocity = 250
 var buffs_initial_velocity = 200
 var buffs_final_velocity = 250
-var asteroid_initial_velocity = 100
+var asteroid_initial_velocity = 150
 var asteroid_final_velocity = 200
 
 var powerup_initial_velocity = 200
@@ -87,8 +87,11 @@ func _on_asteroid_timer_timeout() -> void:
 
 	asteroid.position = asteroid_spawn_location.position
 
+	var direction = randf_range(1.39626, 1.74533)
+	asteroid.rotation = direction
+	
 	var velocity = Vector2(randf_range(asteroid_initial_velocity, asteroid_final_velocity), 0.0)
-	asteroid.linear_velocity = velocity
+	asteroid.linear_velocity = velocity.rotated(direction)
 
 	add_child(asteroid)
 	

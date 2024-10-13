@@ -49,6 +49,7 @@ wait_time = 15.0
 wait_time = 30.0
 
 [node name="AsteroidTimer" type="Timer" parent="."]
+wait_time = 4.0
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(240, 640)
