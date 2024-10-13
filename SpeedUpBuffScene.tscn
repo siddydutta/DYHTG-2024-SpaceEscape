@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://64ujgp4vhl0o"]
+[gd_scene load_steps=10 format=3 uid="uid://d0726d55orpc8"]
 
 [ext_resource type="Script" path="res://SpeedUpBuff.gd" id="1_mqej3"]
 [ext_resource type="Texture2D" uid="uid://2pdc4e5ty8tu" path="res://art/PowerUps/frame 1.png" id="2_xasj8"]
@@ -29,7 +29,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_u73qa")
 }],
-"loop": false,
+"loop": true,
 "name": &"speedUpBuff",
 "speed": 5.0
 }]
@@ -46,6 +46,8 @@ script = ExtResource("1_mqej3")
 scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_3f6y5")
 animation = &"speedUpBuff"
+frame = 5
+frame_progress = 1.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

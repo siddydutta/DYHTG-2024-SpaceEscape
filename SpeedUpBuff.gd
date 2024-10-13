@@ -3,7 +3,7 @@ extends Node2D
 @onready var sprite = $AnimatedSprite2D
 
 func _ready():
-	sprite.play("speedDownBuff")
+	sprite.play("speedUpBuff")
 
 func _process(delta: float) -> void:
 	pass
