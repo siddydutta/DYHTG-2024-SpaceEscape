@@ -18,6 +18,7 @@ func update_score(score):
 func _on_start_button_pressed():
 	$StartButton.hide()
 	$Message.hide()
+	$StartScreen.hide()
 	start_game.emit()
 
 func _on_message_timer_timeout():

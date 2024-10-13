@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://degj6m0gu6v8h"]
+[gd_scene load_steps=4 format=3 uid="uid://degj6m0gu6v8h"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_3qoct"]
 [ext_resource type="FontFile" uid="uid://k8d0jlop2ihp" path="res://fonts/Xolonium-Regular.ttf" id="1_58que"]
+[ext_resource type="Texture2D" uid="uid://xbhktjvurf7d" path="res://GUI backgrounds/Title.png" id="2_d4eld"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_3qoct")
+
+[node name="StartScreen" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_d4eld")
 
 [node name="ScoreLabel" type="Label" parent="."]
 offset_left = 64.0
@@ -21,9 +27,6 @@ offset_right = 360.0
 offset_bottom = 423.0
 theme_override_fonts/font = ExtResource("1_58que")
 theme_override_font_sizes/font_size = 64
-text = "Escape
-Planet
-Earth"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -33,15 +36,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -240.0
-offset_top = -86.0
-offset_right = 240.0
+offset_left = -149.0
+offset_top = -159.0
+offset_right = 151.0
+offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_58que")
 theme_override_font_sizes/font_size = 56
-toggle_mode = true
-text = "Launch Rocket"
 
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
