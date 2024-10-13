@@ -78,6 +78,10 @@ func _on_body_entered(body: Node2D) -> void:
 	# Check if the collided body is a mob
 	if body.is_in_group("mobs"):
 		_on_mob_collision(body)
+	elif body.is_in_group("speedUp"):
+		_on_speedUpBuff_collision(body)
+	elif body.is_in_group("speedDown"):
+		_on_speedDownBuff_collision(body)
 	elif body.is_in_group("powerups"):
 		_on_power_up_collision(body)
 	else:
@@ -100,13 +104,19 @@ func _on_asteroid_collision(asteroid: Node2D) -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
 
 # Handle power-up collision (player collects a power-up)
-func _on_power_up_collision(power_up: Node2D) -> void:
+func _on_speedUpBuff_collision(speedUpBuff: Node2D) -> void:
 	# Increase the player's speed by 1.2x
 	speed_multiplier *= 1.2  # Multiply the current speed by 1.2
 	power_up_collected.emit()  # Emit a signal for collecting the power-up
 
-	# You might want to hide or remove the power-up from the scene
-	power_up.queue_free()
+	speedUpBuff.queue_free()
+	
+func _on_speedDownBuff_collision(speedDownBuff: Node2D) -> void:
+	# Increase the player's speed by 1.2x
+	speed_multiplier *= 0.9  # Multiply the current speed by 1.2
+	power_up_collected.emit()  # Emit a signal for collecting the power-up
+
+	speedDownBuff.queue_free()
 	
 # Function to reset the player and start at a specific position
 func start(pos):

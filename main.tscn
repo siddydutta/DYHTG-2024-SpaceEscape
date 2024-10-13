@@ -1,13 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b24eit6703syq"]
+[gd_scene load_steps=7 format=3 uid="uid://b24eit6703syq"]
 
 [ext_resource type="PackedScene" uid="uid://bqds5kpqglm8d" path="res://Player.tscn" id="1_iwmrs"]
 [ext_resource type="Script" path="res://main.gd" id="1_t4vn5"]
-[ext_resource type="Shader" path="res://scroll.gdshader" id="2_htj57"]
-[ext_resource type="Texture2D" uid="uid://pl11u3ua1kpo" path="res://Background/space background.png" id="3_ety76"]
+[ext_resource type="PackedScene" uid="uid://bwyetln3p16c4" path="res://Background/BackGround.tscn" id="2_t3buh"]
 [ext_resource type="PackedScene" uid="uid://degj6m0gu6v8h" path="res://hud.tscn" id="4_6nxef"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_byheq"]
-shader = ExtResource("2_htj57")
 
 [sub_resource type="Curve2D" id="Curve2D_euxua"]
 _data = {
@@ -24,12 +20,7 @@ point_count = 6
 [node name="Main" type="Node"]
 script = ExtResource("1_t4vn5")
 
-[node name="Pattern" type="TextureRect" parent="."]
-texture_repeat = 2
-material = SubResource("ShaderMaterial_byheq")
-offset_right = 2048.0
-offset_bottom = 1536.0
-texture = ExtResource("3_ety76")
+[node name="BackGround" parent="." instance=ExtResource("2_t3buh")]
 
 [node name="Player" parent="." instance=ExtResource("1_iwmrs")]
 speed = 300
@@ -42,8 +33,11 @@ wait_time = 0.5
 [node name="StartTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="PowerUpTimer" type="Timer" parent="."]
-wait_time = 2.0
+[node name="SpeedUpBuffTimer" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="SpeedDownBuffTimer" type="Timer" parent="."]
+wait_time = 30.0
 
 [node name="AsteroidTimer" type="Timer" parent="."]
 
@@ -68,12 +62,21 @@ rotation = -1.5708
 
 [node name="HUD" parent="." instance=ExtResource("4_6nxef")]
 
-[node name="PowerUpPath" type="Path2D" parent="."]
+[node name="SpeedUpBuffPath" type="Path2D" parent="."]
 position = Vector2(0, 4.73988)
 scale = Vector2(1, 0.407514)
 curve = SubResource("Curve2D_fyrt5")
 
-[node name="PowerUpSpawnLocation" type="PathFollow2D" parent="PowerUpPath"]
+[node name="SpeedUpBuffSpawnLocation" type="PathFollow2D" parent="SpeedUpBuffPath"]
+position = Vector2(8, 8)
+rotation = 0.0172397
+
+[node name="SpeedDownBuffPath" type="Path2D" parent="."]
+position = Vector2(0, 4.73988)
+scale = Vector2(1, 0.407514)
+curve = SubResource("Curve2D_fyrt5")
+
+[node name="SpeedDownBuffSpawnLocation" type="PathFollow2D" parent="SpeedDownBuffPath"]
 position = Vector2(8, 8)
 rotation = 0.0172397
 
@@ -81,5 +84,7 @@ rotation = 0.0172397
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ElevationTimer" to="." method="_on_elevation_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="SpeedUpBuffTimer" to="." method="_on_speedUpBuff_timer_timeout"]
+[connection signal="timeout" from="SpeedDownBuffTimer" to="." method="_on_speed_down_buff_timer_timeout"]
 [connection signal="timeout" from="PowerUpTimer" to="." method="_on_power_up_timer_timeout"]
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]

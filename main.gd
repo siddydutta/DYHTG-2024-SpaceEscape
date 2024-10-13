@@ -1,12 +1,16 @@
 extends Node
 
 @export var mob_scene: PackedScene = preload("res://mob.tscn")
+@export var speedUp_scene: PackedScene = preload("res://SpeedUpBuffScene.tscn")
+@export var speedDown_scene: PackedScene = preload("res://SpeedDownBuffScene.tscn")
 @export var asteroid_scene: PackedScene = preload("res://asteroid.tscn")
 @export var power_up_scene: PackedScene = preload("res://power_up.tscn")
 
 var score
 var mob_initial_velocity = 200
 var mob_final_velocity = 250
+var buffs_initial_velocity = 200
+var buffs_final_velocity = 250
 var asteroid_initial_velocity = 100
 var asteroid_final_velocity = 200
 
@@ -20,6 +24,7 @@ func _ready():
 	$Player.connect("power_up_collected", Callable(self, "_on_power_up_collected"))
 	$MobTimer.wait_time = 1
 	score = 0
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -27,6 +32,8 @@ func _process(delta: float) -> void:
 func game_over():
 	$ElevationTimer.stop()
 	$MobTimer.stop()
+	$SpeedUpBuffTimer.stop()
+	$SpeedDownBuffTimer.stop()
 	$PowerUpTimer.stop()
 	$AsteroidTimer.stop()
 	$HUD.show_game_over()
@@ -40,6 +47,8 @@ func new_game():
 func _on_start_timer_timeout():
 	$MobTimer.start()
 	$ElevationTimer.start()
+	$SpeedUpBuffTimer.start()
+	$SpeedDownBuffTimer.start()
 	$PowerUpTimer.start()
 	$AsteroidTimer.start()
 
@@ -90,22 +99,40 @@ func _on_power_up_collected():
 	score += 3
 	$HUD.update_score(score)
 	
-func _on_power_up_timer_timeout() -> void:
-	var powerUp = power_up_scene.instantiate()
+func _on_speedUpBuff_timer_timeout() -> void:
+	var speedUpBuff = speedUp_scene.instantiate()
 
 	# Choose a random location on Path2D
-	var powerUp_spawn_location = $PowerUpPath/PowerUpSpawnLocation
-	powerUp_spawn_location.progress_ratio = randf()
+	var speedUpBuff_spawn_location = $SpeedUpBuffPath/SpeedUpBuffSpawnLocation
+	speedUpBuff_spawn_location.progress_ratio = randf()
 	
 	# Set rotation explicitly to face down (PI / 2 radians)
 	var direction = PI / 2
-	powerUp.rotation = direction
+	speedUpBuff.rotation = direction
 
 	# Set the position to the spawn location
-	powerUp.position = powerUp_spawn_location.position
+	speedUpBuff.position = speedUpBuff_spawn_location.position
 
 	# Set the velocity to move straight down
-	var velocity = Vector2(0.0, randf_range(powerup_initial_velocity, powerup_final_velocity))  # Moving down (positive y)
-	powerUp.linear_velocity = velocity
+	var velocity = Vector2(0.0, randf_range(buffs_initial_velocity, buffs_final_velocity))  # Moving down (positive y)
+	speedUpBuff.linear_velocity = velocity
 
-	add_child(powerUp)
+	add_child(speedUpBuff)
+	
+func _on_speed_down_buff_timer_timeout() -> void:
+	var speedDownBuff = speedDown_scene.instantiate()
+
+	var speedDownBuff_spawn_location = $SpeedDownBuffPath/SpeedDownBuffSpawnLocation
+	speedDownBuff_spawn_location.progress_ratio = randf()
+	
+	var direction = PI / 2
+	speedDownBuff.rotation = direction
+
+	# Set the position to the spawn location
+	speedDownBuff.position = speedDownBuff_spawn_location.position
+
+	# Set the velocity to move straight down
+	var velocity = Vector2(0.0, randf_range(buffs_initial_velocity, buffs_final_velocity))  # Moving down (positive y)
+	speedDownBuff.linear_velocity = velocity
+
+	add_child(speedDownBuff)

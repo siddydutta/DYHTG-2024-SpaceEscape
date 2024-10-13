@@ -24,6 +24,8 @@ window/stretch/mode="canvas_items"
 [global_group]
 
 mobs="Objects that will hit the player and end the game"
+speedUp="Increase the velocity of the rocket."
+speedDown="Decrease the velocity of the rocket."
 powerups="PowerUps that will make the player go faster"
 asteroids=""
 
